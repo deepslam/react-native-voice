@@ -152,9 +152,11 @@
             [self teardown];
             return;
         }
-     
+
+        BOOL isFinal = false;
+
         if (result != nil) {       
-            BOOL isFinal = result.isFinal;
+            isFinal = result.isFinal;
             
             NSMutableArray* transcriptionDics = [NSMutableArray new];
             for (SFTranscription* transcription in result.transcriptions) {
@@ -357,7 +359,6 @@ RCT_EXPORT_METHOD(startSpeech:(NSString*)localeStr
                 [self setupAndStartRecognizing:localeStr];
                 resolve(nil);
                 return;
-            }
         }
     }];
 }
